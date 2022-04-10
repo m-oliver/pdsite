@@ -80,11 +80,11 @@ function build(){
     # Copy in other content files
     find -not -path "*/\.*" -not -path "$indexfileglob" -path "$extensionglob" -type f | while read inpath; do
 	outpath=$(echo $inpath | sed 's|\./\(.*\)\.\(.*\)|\1/index.\2|' | makeslug)
-	cp "$inpath" "$outputfolder"/"$outpath"
+	cp -p "$inpath" "$outputfolder"/"$outpath"
     done
 
     # Copy in other (non-written-content) files
-    find -not -path "*/\.*" -not -path "$extensionglob" -type f -exec cp {} "$outputfolder"/{} \;
+    find -not -path "*/\.*" -not -path "$extensionglob" -type f -exec cp -p {} "$outputfolder"/{} \;
 
     cd "$outputfolder"
 
