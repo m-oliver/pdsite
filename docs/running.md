@@ -18,6 +18,7 @@ This will create a default `.pdsite.yml` YAML file in your current directory. Yo
 theme: default
 inputextension: .md
 outputfolder: .html
+sitepath: 
 
 # Site-wide template variables
 
@@ -26,6 +27,8 @@ sitename: "pdsite"
 pagetitle-suffix: "Pandoc-backed static site generator"
 footer: '<a class="navbar-link" href="https://github.com/GordStephen/pdsite">GitHub Repo</a> | <a class="navbar-link" href="https://github.com/GordStephen/pdsite/issues">Report an Issue</a>'
 ```
+
+The variable `sitepath` can be used to specify a path prefix in case that the root of the `pdsite` document tree is located in a subdirectory of the web server root.
 
 ### Building your site
 

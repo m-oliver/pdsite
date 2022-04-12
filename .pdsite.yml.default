@@ -3,6 +3,7 @@
 theme: default
 inputextension: .md
 outputfolder: .html
+sitepath: 
 
 # Site-wide template variables
 

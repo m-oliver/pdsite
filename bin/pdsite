@@ -16,6 +16,7 @@ function build(){
 	theme=$(cat $configfile | grep '^theme:' | sed 's|^theme:\s*\(.*\)$|\1|')
 	inputextension=$(cat $configfile | grep '^inputextension:' | sed 's|^inputextension:\s*\(.*\)$|\1|')
 	outputfolder=$(cat $configfile | grep '^outputfolder:' | sed 's|^outputfolder:\s*\(.*\)$|\1|')
+	sitepath=$(cat $configfile | grep '^sitepath:' | sed 's|^sitepath:\s*\(.*\)$|\1|')
 	[ "$theme" ] && [ "$inputextension" ] && [ "$outputfolder" ] || {
 	    echo "ERROR: Missing config variables in .pdsite.yml" 1>&2
 	    exit 1
@@ -93,7 +94,7 @@ function build(){
     tree -dfJ --noreport | cut -c 2- | while read line; do
 
 	# Generate path relative to site root
-	path=$(echo $line | grep 'type' | sed 's|.*"name":"\.\(.*\)","contents".*|\1|')
+	path=$(echo $line | grep 'type' | sed 's|.*"name":"\.\(.*\)","contents".*|'"$sitepath"'\1|')
 
 	# Generate pretty page name automatically
 	name=$(echo $path | sed 's|.*/\(.*\)|\1|' | makepretty)
